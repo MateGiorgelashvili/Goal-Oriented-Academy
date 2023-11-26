@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mate Typing Practice</title>
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+
+        h1 {
+            color: #ff0;
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .typing-container {
+            background-color: #222;
+            padding: 20px;
+            margin: 20px auto;
+            width: 600px;
+            border-radius: 10px;
+        }
+
+        .text {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .input {
+            font-size: 18px;
+            padding: 10px;
+            width: 400px;
+            text-align: center;
+        }
+
+        .result {
+            font-size: 18px;
+            margin-top: 20px;
+        }
+
+        .error {
+            color: #f00;
+            font-weight: bold;
+        }
+
+        .next-button {
+            background-color: #ff0;
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-top: 20px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Mate Typing Practice</h1>
+
+    <div class="typing-container">
+        <p class="text" id="text"></p>
+        <input class="input" type="text" id="input" autofocus>
+        <p class="result" id="result"></p>
+        <p class="error">Errors: <span id="error-count">0</span></p>
+        <button class="next-button" id="next-button">Next</button>
+    </div>
+
+    <script>
+        const texts = [
+            "The quick brown fox jumps over the lazy dog.",
+            "Sphinx of black quartz, judge my vow.",
+            "Pack my box with five dozen liquor jugs.",
+            "How vexingly quick daft zebras jump.",
+            "Two driven jocks help fax my big quiz.",
+            "Cozy lummox gives smart squid who asks for job pen."
+        ];
+
+        let currentTextIndex;
+        let startTime;
+        let errorCount;
+
+        function startTyping() {
+            currentTextIndex = Math.floor(Math.random() * texts.length);
+            document.getElementById("text").textContent = texts[currentTextIndex];
+            document.getElementById("input").value = "";
+            document.getElementById("result").textContent = "";
+            document.getElementById("error-count").textContent = "0";
+            errorCount = 0;
+
+            startTime = new Date().getTime();
+        }
+
+        function checkInput() {
+            const input = document.getElementById("input").value;
+            const originalText = texts[currentTextIndex];
+
+            if (input.length === originalText.length) {
+                const endTime = new Date().getTime();
+                const totalTime = (endTime - startTime) / 1000; // in seconds
+
+                let errors = 0;
+                for (let i = 0; i < input.length; i++) {
+                    if (input[i] !== originalText[i]) {
+                        errors++;
+                    }
+                }
+
+                const speed = Math.round(((originalText.length - errors) / totalTime) * 60); // in characters per minute
+
+                document.getElementById("result").textContent = `Your typing speed: ${speed} CPM`;
+                document.getElementById("error-count").textContent = errors;
+            }
+        }
+
+        function handleKeyDown(event) {
+            const input = document.getElementById("input");
+            const originalText = texts[currentTextIndex];
+
+            if (event.key !== originalText[input.value.length]) {
+                event.preventDefault();
+                errorCount++;
+                document.getElementById("error-count").textContent = errorCount;
+            }
+        }
+
+        function nextText() {
+            startTyping();
+        }
+
+        document.getElementById("input").addEventListener("input", checkInput);
+        document.getElementById("input").addEventListener("keydown", handleKeyDown);
+        document.getElementById("next-button").addEventListener("click", nextText);
+
+        startTyping();
+    </script>
+</body>
+</html>

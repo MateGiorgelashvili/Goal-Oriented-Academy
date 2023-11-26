@@ -1,0 +1,43 @@
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+  background-image: url('images/ph1.jpg');
+  background-size: cover;
+  background-position: center;
+  color: #fff; 
+}
+
+.text {
+  max-width: 800px;
+  margin: 200px auto;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+h1, p {
+  color: #333;
+}
+
+.photo {
+  text-align: center;
+  margin-top: 20px;
+  display: none; 
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}

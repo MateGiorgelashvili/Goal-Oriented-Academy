@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Festive&family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+
+h1{
+  font-family: 'Festive', cursive;
+  font-size: 100px;
+  text-align: center;
+  text-decoration-line: overline;
+  text-decoration-color: green;
+  text-decoration-style: dashed;
+  color: red;
+}
+
+p {
+  font-family: 'Great Vibes', cursive;
+  font-size: 30px;
+  text-align: center;
+  font-weight: bold;
+}
+
+img {
+  display: block;
+  margin: auto;
+}
+
+h3 {
+  text-align: center;
+  color: brown;
+}
+
+h2 {
+  text-align: center;
+  color: green;
+  font-family: 'Great Vibes';
+  font-size: 40px;
+}
+
+a {
+  text-decoration: none;
+  font-size: 20px;
+  color: goldenrod;
+}
